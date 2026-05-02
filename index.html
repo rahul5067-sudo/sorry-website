@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I'm So Sorry, My Love ❤️</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@200;300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(-45deg, #ff9a9e 0%, #fecfef 25%, #fecfef 75%, #ff9a9e 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 12s ease infinite;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            padding-bottom: 120px; /* Space for fixed CTA */
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* ENHANCED HEARTS + MULTIPLE FLOATERS */
+        .floaters {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .floater {
+            position: absolute;
+            animation: floatUp 8s infinite linear;
+            opacity: 0.7;
+        }
+        
+        .heart { color: #f40856; font-size: clamp(16px, 4vw, 24px); }
+        .star { color: #ffd700; font-size: clamp(14px, 3.5vw, 20px); }
+        .rose { color: #ff1493; font-size: clamp(20px, 5vw, 28px); }
+        
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) rotate(0deg) scale(0); opacity: 0; }
+            10% { opacity: 1; transform: scale(1); }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100px) rotate(720deg) scale(1.5); opacity: 0; }
+        }
+        
+        /* MOBILE-OPTIMIZED CONTAINER */
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: clamp(15px, 5vw, 25px);
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: clamp(20px, 4vw, 30px);
+        }
+        
+        /* RESPONSIVE GLOWING HEADER */
+        .header {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(2.2rem, 10vw, 4.5rem);
+            background: linear-gradient(45deg, #fff, #ff6b9d, #ffd93d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(255,255,255,0.8);
+            animation: headerGlow 3s ease-in-out infinite alternate, floatIn 1s ease-out;
+            line-height: 1.2;
+            margin-bottom: clamp(10px, 2vw, 20px);
+        }
+        
+        @keyframes headerGlow {
+            from { filter: drop-shadow(0 0 20px #ff6b9d); }
+            to { filter: drop-shadow(0 0 40px #ffd93d); }
+        }
+        
+        @keyframes floatIn {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        /* RESPONSIVE 3D PHOTO */
+        .photo-section {
+            perspective: 1000px;
+            margin: clamp(20px, 5vw, 40px) 0;
+        }
+        
+        .photo {
+            width: clamp(180px, 45vw, 280px);
+            height: clamp(180px, 45vw, 280px);
+            border-radius: 50%;
+            border: 10px solid rgba(255,255,255,0.9);
+            box-shadow: 
+                0 25px 50px rgba(0,0,0,0.4),
+                0 0 50px rgba(255,107,157,0.5),
+                inset 0 0 30px rgba(255,255,255,0.4);
+            margin: 0 auto;
+            object-fit: cover;
+            transform-style: preserve-3d;
+            animation: photoFloat 4s ease-in-out infinite, rotatePhoto 20s linear infinite;
+            transition: transform 0.3s ease;
+        }
+        
+        .photo:hover {
+            transform: scale(1.1) rotateY(10deg) rotateX(10deg);
+            box-shadow: 0 35px 70px rgba(0,0,0,0.5);
+        }
+        
+        @keyframes photoFloat {
+            0%, 100% { transform: translateY(0) rotateY(0deg); }
+            50% { transform: translateY(-15px) rotateY(180deg); }
+        }
+        
+        @keyframes rotatePhoto {
+            from { transform: rotateZ(0deg); }
+            to { transform: rotateZ(360deg); }
+        }
+        
+        /* GLASSMORPHISM MESSAGE */
+        .message {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(25px);
+            border-radius: 30px;
+            padding: clamp(25px, 6vw, 45px);
+            margin: clamp(20px, 4vw, 35px) 0;
+            box-shadow: 
+                0 25px 50px rgba(0,0,0,0.25),
+                inset 0 0 20px rgba(255,255,255,0.3);
+            border: 1px solid rgba(255,255,255,0.3);
+            line-height: 1.7;
+            font-size: clamp(1rem, 3.5vw, 1.25rem);
+            color: rgba(255,255,255,0.95);
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+            animation: messageSlide 1.2s ease-out 0.5s both;
+            transition: all 0.4s ease;
+        }
+        
+        .message:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 35px 70px rgba(0,0,0,0.35);
+        }
+        
+        @keyframes messageSlide {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        .highlight {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(1.4rem, 5vw, 2.2rem);
+            background: linear-gradient(45deg, #ffd93d, #ff6b9d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: clamp(15px, 3vw, 25px) 0;
+            animation: highlightPulse 2s ease-in-out infinite;
+            display: block;
+        }
+        
+        @keyframes highlightPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        /* RESPONSIVE PROMISES GRID */
+        .promises {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(clamp(200px, 45vw, 280px), 1fr));
+            gap: clamp(15px, 3vw, 25px);
+            margin: clamp(30px, 6vw, 50px) 0;
+        }
+        
+        .promise {
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(15px);
+            padding: clamp(20px, 5vw, 30px);
+            border-radius: 25px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+            border: 1px solid rgba(255,255,255,0.3);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .promise::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.6s;
+        }
+        
+        .promise:hover::before {
+            left: 100%;
+        }
+        
+        .promise:hover {
+            transform: translateY(-15px) scale(1.05);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+        }
+        
+        .promise h3 {
+            color: #ff6b9d;
+            margin-bottom: clamp(10px, 2vw, 15px);
+            font-size: clamp(1.1rem, 4vw, 1.4rem);
+            font-weight: 600;
+        }
+        
+        .promise p {
+            color: rgba(255,255,255,0.9);
+            font-size: clamp(0.9rem, 3vw, 1rem);
+            line-height: 1.6;
+        }
+        
+        /* FIXED MOBILE CTA BAR */
+        .cta-section {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.9);
+            backdrop-filter: blur(25px);
+            padding: clamp(20px, 4vw, 25px);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            z-index: 100;
+            box-shadow: 0 -8px 30px rgba(0,0,0,0.4);
+        }
+        
+        .cta-button {
+            background: linear-gradient(135deg, #ff6b9d 0%, #c44569 100%);
+            color: white;
+            border: none;
+            padding: clamp(15px, 4vw, 20px) clamp(25px, 6vw, 40px);
+            font-size: clamp(1rem, 3.5vw, 1.3rem);
+            border-radius: 35px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 12px 30px rgba(255,107,157,0.4);
+            position: relative;
+            overflow: hidden;
+            flex: 1;
+            min-width: 140px;
+            max-width: 200px;
+        }
+        
+        .cta-button.whatsapp {
+            background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+            box-shadow: 0 12px 30px rgba(37,211,102,0.4);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-8px) scale(1.08);
+            box-shadow: 0 20px 45px rgba(255,107,157,0.6);
+        }
+        
+        .music-player {
+            margin: clamp(20px, 4vw, 35px) 0;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideUp 0.8s ease-out forwards;
+        }
+        
+        @keyframes slideUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* PERFECT MOBILE RESPONSIVE */
+        @media (max-width: 480px) {
+            .cta-section { flex-direction: column; padding: 20px 15px; }
+            .cta-button { width: 100%; margin-bottom: 10px; }
+            body { padding-bottom: 150px; }
+        }
+        
+        @media (min-width: 769px) {
+            .container { max-width: 900px; padding: 40px 30px; }
+            .cta-section { max-width: 900px; margin: 0 auto; padding: 25px 30px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="floaters" id="floaters"></div>
+    
+    <div class="container">
+        <h1 class="header">I'm So Sorry,Khushbu❤️</h1>
+        
+        <div class="photo-section">
+             <img src="img.jpeg" alt="Our Photo" class="photo">
+        </div>
+        
+        <div class="message">
+            <p style="font-weight: 500; font-size: clamp(1.1rem, 4vw, 1.3rem); margin-bottom: 20px;">
+                My dearest <strong>Khushbu❤️</strong>,
+            </p>
+            
+            <p class="highlight">I know I've hurt you deeply, and I hate myself for it.</p>
+            
+            <p>Every moment without you feels empty. I was wrong, I was selfish, and I <strong>promise you with all my heart</strong> that I'll never make the same mistake again.</p>
+            
+            <p>You are my everything – my best friend, my love, <strong>my home</strong>.</p>
+            
+            <p class="highlight">Please give me one more chance to show you how much you mean to me.</p>
+            
+            <p style="font-size: clamp(1.2rem, 4.5vw, 1.6rem); margin-top: 25px; font-weight: 700;">
+                I love you more than words can say. 💕<br>
+                <em>Khushbu❤️</em>
+            </p>
+        </div>
+        
+        <div class="promises">
+            <div class="promise" onclick="promiseClick(this)">
+                <h3>❤️ Listen Always</h3>
+                <p>Your feelings matter <strong>MOST</strong> to me now.</p>
+            </div>
+            <div class="promise" onclick="promiseClick(this)">
+                <h3>💍Forever Us</h3>
+                <p>I still choose you every time.</p>
+            </div>
+            <div class="promise" onclick="promiseClick(this)">
+                <h3>🌹 Daily Smiles</h3>
+                <p>Your smile means everything to me.</p>
+            </div>
+            <div class="promise" onclick="promiseClick(this)">
+                <h3>🙏 Total Change</h3>
+                <p>I'll become the man you dreamed of.</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- FIXED BOTTOM CTA BAR -->
+    <div class="cta-section">
+        <button class="cta-button whatsapp" onclick="whatsappMe()">
+            💬 WhatsApp Me
+        </button>
+        <button class="cta-button" onclick="playMusic()">
+            🎵 Our Song
+        </button>
+        <button class="cta-button" onclick="callMe()">
+            📞 Call Now
+        </button>
+    </div>
+    
+    <div class="music-player" id="musicPlayer">
+        <audio controls style="width: 100%; max-width: 400px; border-radius: 20px;">
+            <source src="https://www.soundjay.com/misc/sounds/bell-ringing-05.wav" type="audio/wav">
+            <!-- Replace with romantic song URL -->
+        </audio>
+    </div>
+
+    <script>
+        // ENHANCED FLOATING ANIMATIONS
+        const floaters = ['💕', '⭐', '🌹', '💖', '✨', '💫'];
+        function createFloater() {
+            const floater = document.createElement('div');
+            floater.className = 'floater';
+            const type = floaters[Math.floor(Math.random() * floaters.length)];
+            floater.innerHTML = type;
+            if (type === '💕' || type === '💖') floater.classList.add('heart');
+            else if (type === '⭐') floater.classList.add('star');
+            else floater.classList.add('rose');
+            
+            floater.style.left = Math.random() * 100 + '%';
+            floater.style.animationDuration = (Math.random() * 4 + 6) + 's';
+            document.getElementById('floaters').appendChild(floater);
+            
+            setTimeout(() => floater.remove(), 10000);
+        }
+        
+        setInterval(createFloater, 250);
+        
+        // Promise click animation
+        function promiseClick(promise) {
+            promise.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                promise.style.transform = 'translateY(-15px) scale(1.05)';
+            }, 150);
+            setTimeout(() => {
+                promise.style.transform = '';
+            }, 500);
+        }
+        
+        // CTA Functions
+        function whatsappMe() {
+            window.open('https://wa.me/+1234567890?text=I%20saw%20your%20page...%20❤️', '_blank');
+            // Replace number!
+        }
+        
+        function callMe() {
+            window.location.href = 'tel:+1234567890';
+        }
+        
+        function playMusic() {
+            const player = document.getElementById('musicPlayer');
+            player.style.display = 'block';
+            player.querySelector('audio').play().catch(e => console.log('Audio play failed'));
+        }
+        
+        // EPIC LOAD ANIMATION
+        window.onload = () => {
+            // Explosion of floaters
+            for(let i = 0; i < 80; i++) {
+                setTimeout(() => createFloater(), i * 80);
+            }
+        };
+        
+        // Smooth scroll for mobile
+        document.addEventListener('touchmove', () => {}, { passive: false });
+    </script>
+</body>
+</html>
